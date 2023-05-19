@@ -36,3 +36,10 @@ coins = {
     "dime": 0.1,
     "quarter": 0.25
 }
+
+# Check whether there are enough resources to make a drink
+def enough_resources (drink_name):
+    for ingredient in menu[drink_name]["ingredients"]:
+        if menu[drink_name]["ingredients"][ingredient] > resources[ingredient]:
+            return False
+    return True
