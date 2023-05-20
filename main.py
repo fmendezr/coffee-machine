@@ -43,6 +43,7 @@ money = 0
 def enough_resources (drink_name):
     for ingredient in menu[drink_name]["ingredients"]:
         if menu[drink_name]["ingredients"][ingredient] > resources[ingredient]:
+            print(f"Sorry there is not enough {ingredient}.")
             return False
     return True
 
@@ -66,9 +67,25 @@ def process_transaction (money_inserted, cost_of_beverage):
         money += cost_of_beverage
         return True
     else:
+        print("Sorry that is not enough money. Money Refunded.")
         return False
 
 def make_coffee (drink):
     for resource in menu[drink]["ingredients"]:
         resources[resource] -= menu[drink]["ingredients"][resource]
     print(f"Here is your {drink}. Enjoy!")
+
+if __name__ == "__main__":
+    while True:
+        drink = input("What would you like? (espresso/latte/cappuccino): ")
+        if drink == "report":
+            report()
+        else:
+            if enough_resources(drink):
+                print("Please Insert Coins: ")
+                pennies = int(input("Pennies: "))
+                nickels = int(input("Nickel: "))
+                dimes = int(input("Dime: "))
+                quarters = int(input("Quarters: "))
+                if process_transaction(value_of_coins(pennies, nickels, dimes, quarters), menu[drink]["cost"]):
+                    make_coffee(drink)
