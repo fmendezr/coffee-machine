@@ -60,7 +60,10 @@ def value_of_coins (pennies, nickels, dimes, quarters):
 # Process transaction 
 def process_transaction (money_inserted, cost_of_beverage):
     if money_inserted >= cost_of_beverage: 
-        return money_inserted - cost_of_beverage
+        change = money_inserted - cost_of_beverage
+        print(f"Here is ${change} in change")
+        global money
+        money += cost_of_beverage
+        return True
     else:
         return False
-    
