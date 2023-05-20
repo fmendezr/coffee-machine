@@ -67,3 +67,8 @@ def process_transaction (money_inserted, cost_of_beverage):
         return True
     else:
         return False
+
+def make_coffee (drink):
+    for resource in menu[drink]["ingredients"]:
+        resources[resource] -= menu[drink]["ingredients"][resource]
+    print(f"Here is your {drink}. Enjoy!")
