@@ -37,9 +37,20 @@ coins = {
     "quarter": 0.25
 }
 
+money = 0
+
 # Check whether there are enough resources to make a drink
 def enough_resources (drink_name):
     for ingredient in menu[drink_name]["ingredients"]:
         if menu[drink_name]["ingredients"][ingredient] > resources[ingredient]:
             return False
     return True
+
+# Report how many resources are left
+def report():
+    print(f"""Water: {resources['water']}ml
+Milk: {resources["milk"]}ml
+Coffee: {resources["coffee"]}g
+Money: ${money}""")
+
+report()
