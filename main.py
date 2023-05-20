@@ -56,3 +56,11 @@ Money: ${money}""")
 # Get total value of coins inserted
 def value_of_coins (pennies, nickels, dimes, quarters):
     return (pennies * 0.01) + (nickels * 0.05) + (dimes * 0.10) + (quarters * 0.25)
+
+# Process transaction 
+def process_transaction (money_inserted, cost_of_beverage):
+    if money_inserted >= cost_of_beverage: 
+        return money_inserted - cost_of_beverage
+    else:
+        return False
+    
